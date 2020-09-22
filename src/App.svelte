@@ -1,8 +1,8 @@
 <script>
   import Router from 'svelte-spa-router'
   import Background from './components/Background.svelte';
-  import Nav from './components/Nav.svelte';
-  import Explore from './pages/explore.svelte';
+  import Nav from './components/Nav.svelte'
+  import Explore from './pages/explore.svelte'
   import Home from './pages/home.svelte';
   import Oddity from './pages/oddity/index.svelte'
 
@@ -10,8 +10,8 @@
     '/home': Home,
     '/explore': Explore,
     '/oddity': Oddity,
-    '/oddity/*': Oddity
   }
+  console.log('APP')
 </script>
 
 <Background />

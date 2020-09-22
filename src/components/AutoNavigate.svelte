@@ -7,7 +7,6 @@
   const routes = [
     '/home',
     '/oddity',
-    '/oddity/intro',
     '/explore'
   ]
 
@@ -15,7 +14,6 @@
     clearInterval(interval)
     active = !active
     console.log('handleClick', active)
-
     if (active) start()
   }
 

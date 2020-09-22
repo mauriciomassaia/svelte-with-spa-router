@@ -1,17 +1,30 @@
 <script>
-  import Router from 'svelte-spa-router'
+  import { onDestroy } from 'svelte'
   import ProviderA from '../../components/ProviderA.svelte'
+  import { page } from '../../stores/oddity'
+  import Details from './details.svelte'
   import Intro from './intro.svelte'
 
-  const prefix = '/oddity'
-  const routes = {
-    '/intro': Intro,
-  }
+  const map =  new Map()
+  map.set('intro', Intro)
+  map.set('details', Details)
 
-  export const params = ''
+  let curComponent
+
+  let unsub = page.subscribe(value => {
+    console.log(value)
+    curComponent = value
+  })
+
+  console.log('oddity/index created')
+
+  onDestroy(() => {
+    unsub()
+    map.clear()
+    console.log('oddity/index destroyed')
+  })
 </script>
-
-<h2>Oddity/</h2>
+<p>Oddity Page</p>
 <ProviderA>
-  <Router {routes} {prefix}/>
+  {#if curComponent}{curComponent}{/if}
 </ProviderA>

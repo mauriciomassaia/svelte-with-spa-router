@@ -1,19 +1,34 @@
 <script>
-  import { location } from 'svelte-spa-router'
+  import { location, push } from 'svelte-spa-router'
   import AutoNavigate from './AutoNavigate.svelte'
+  import {changeOddityPage} from '../stores/oddity'
 
   const routes = [
     '/home',
     '/oddity',
     '/oddity/intro',
+    '/oddity/details',
     '/explore',
   ]
+
+  function handleRoute (value) {
+    console.log('handleRoute', value)
+    const a = value.split('/')
+    console.log(a, a[1], a[1] === 'oddity', value.split('/'))
+    if (a[1] === 'oddity') {
+      changeOddityPage(a[2])
+    } else {
+      console.log('push ', `/${a[1]}`)
+      push(`/${a[1]}`)
+    }
+  }
+
 </script>
 
 <div>
   <ul>
     {#each routes as route}
-    <li class:current={route === $location}><a href="#{route}">{route}</a></li>
+    <li class:current={route === $location}><a on:click={() => handleRoute(route)}>{route}</a></li>
     {/each}
   </ul>
   <AutoNavigate />

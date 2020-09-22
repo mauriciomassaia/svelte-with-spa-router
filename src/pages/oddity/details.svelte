@@ -7,6 +7,6 @@
     console.log('oddity/intro onMount', ctx, params)
   })
 </script>
-<h3> Intro nested page</h3>
+<h3> Details nested page</h3>
 <hr />
 <p>{ctx.message}</p>
