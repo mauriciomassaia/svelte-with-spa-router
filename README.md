@@ -20,4 +20,4 @@ npm run build
 npm start
 ```
 
-Thanks @sveltejs and @italypaleale :tada:
+Thanks [sveltejs](https://github.com/sveltejs) and [italypaleale](https://github.com/italypaleale) :tada:
